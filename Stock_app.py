@@ -28,6 +28,7 @@ init = st.date_input("Enter the start date [YYYY-MM-DD]:", ) #datetime.date(2019
 finish=st.date_input("Enter the finish date [YYYY-MM-DD]:", )#datetime.date(2019, 7, 6)
 submit_code = st.form_submit_button("Execute")
 
+if submit_code:
 
 # In[13]:
 
