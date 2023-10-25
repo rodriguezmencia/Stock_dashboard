@@ -1,15 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
-#pip install yfinance
-
-
-# In[1]:
-
-
 #------------------------------
 #------import libraries--------
 #------------------------------
@@ -22,10 +10,6 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-
-
-# In[ ]:
-
 
 #Streamlit app
 st.markdown('''
