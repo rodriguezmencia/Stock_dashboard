@@ -93,6 +93,8 @@ if submit_code:
             
         with col2:
             st.markdown("**Summary**")
+            st.write(stock.history(period='1d'))
+
         
         from datetime import datetime
         import time
