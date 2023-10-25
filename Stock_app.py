@@ -72,7 +72,7 @@ if submit_code:
             # hide weekends without transactions
             fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
             
-            st.plotly_chart(fig)
+            st.plotly_chart(fig,use_container_width=True)
             
         with col2:
             st.write("Select some analytics")
