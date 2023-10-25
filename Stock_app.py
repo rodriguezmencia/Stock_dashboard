@@ -95,6 +95,8 @@ if submit_code:
         var=stock_now/stock_beg-1
         
         formatted_stock_now = "{:.2f}".format(stock_now)
+        formatted_vol_now = "{:.2f}".format(vol_now/1000000)
+        formatted_time = time.strftime("%Y-%m-%d, %H:%M:%S")
         formatted_var = "{:.2%}".format(var)
         text_color = "green" if var > 0 else "red"
         
@@ -109,10 +111,10 @@ if submit_code:
             st.write(f'<p style="color:{text_color}">{formatted_var}</p>', unsafe_allow_html=True)
         with col3:
             st.markdown(f"**Volume")
-            st.write(vol_now)
+            st.write(f'<p style="color:black">{formatted_vol_now}</p>', unsafe_allow_html=True)
         with col4:
             st.markdown(f"**Date")
-            st.write(time)
+            st.write(f'<p style="color:black">{formatted_time}</p>', unsafe_allow_html=True)
         
         st.plotly_chart(fig,use_container_width=True)
         
