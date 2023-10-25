@@ -55,7 +55,8 @@ if submit_code:
               high=df['High'],
               low=df['Low'],
               close=df['Close']),row=1,col=1)
-                fig.add_trace(go.Bar(x=df.index,
+            
+            fig.add_trace(go.Bar(x=df.index,
                              y=df['Volume'],
                              marker_color='blue'), row=2, col=1)
         
