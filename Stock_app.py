@@ -136,21 +136,22 @@ if submit_code:
 	#-------------Part 2
         st.markdown("**Historical price evolution**")
         st.plotly_chart(fig,use_container_width=True)
-
+	    
 	#-------------Part 3
-        st.markdown("**Data Analysis**")
-        conn = sqlite3.connect('hist_price.sqlite')
-        c = conn.cursor()
-        # Fxn Make Execution
+	st.markdown("**Data Analysis**")
+	conn = sqlite3.connect('hist_price.sqlite')
+	c = conn.cursor()
+        
+	# Fxn Make Execution
         def sql_executor(raw_code):
 	        c.execute(raw_code)
 	        data = c.fetchall()
 	        return data 
         data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
 		
-		col5,col6 = st.columns(2)
-		# query
-		with col5:
+	col5,col6 = st.columns(2)
+	# query
+	with col5:
 		with st.form(key='query_form'):
 			raw_code = st.text_area("SQL Code Here")
 			submit_code = st.form_submit_button("Execute")
