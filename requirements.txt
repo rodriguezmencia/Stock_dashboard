@@ -11,4 +11,4 @@ jupyter
 yfinance
 datetime
 time
-sqlite3
+#sqlite3
