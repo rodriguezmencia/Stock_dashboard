@@ -14,34 +14,36 @@ from datetime import datetime
 import time
 
 #Streamlit app
-st.markdown('''
-#Stock Analytics
-
-#Select what company do you want to analyze
-''')
-
+# sidebar
 with st.sidebar.form(key ='Form1'):
     st.title("Enter information")
     symbol = st.text_input('Stock symbol', 'e.g.AAPL')
-    interval=st.selectbox('Enter the interval of time:',
+    inter=st.selectbox('Enter the interval of time:',
     ('1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', '1d', '5d', '1wk', '1mo', '3mo'))
     init = st.date_input("Enter the start date [YYYY-MM-DD]:", ) #datetime.date(2019, 7, 6)
     finish=st.date_input("Enter the finish date [YYYY-MM-DD]:", )#datetime.date(2019, 7, 6)
     submit_code = st.form_submit_button(label ="Execute")
 
-#if submit_code:
-#    st.write("Hello")
+#main page
+# title
+st.subheader("Stock Analytics")
+st.markdown("""---""")
 
-# In[13]:
+# plot
+if submit_code:
+    st.write("Hello")
+    stock=yf.Ticker(symbol)
+    df=stock.history(interval=inter, start=init, end=finish)
+    st.write(df)
 
+#symbol = input('Enter the stock symbol:')# ex.'AAPL'
+#inter=input('Enter the interval of time:') #[1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo]
+#init=input('Enter the start date [YYYY-MM-DD]:') #YYYY-MM-DD
+#finish=input('Enter the finish date [YYYY-MM-DD]:') #YYYY-MM-DD
 
-symbol = input('Enter the stock symbol:')# ex.'AAPL'
-inter=input('Enter the interval of time:') #[1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo]
-init=input('Enter the start date [YYYY-MM-DD]:') #YYYY-MM-DD
-finish=input('Enter the finish date [YYYY-MM-DD]:') #YYYY-MM-DD
-stock=yf.Ticker(symbol)
-df=stock.history(interval=inter, start=init, end=finish)
-df
+#stock=yf.Ticker(symbol)
+#df=stock.history(interval=inter, start=init, end=finish)
+#df
 
 
 # In[8]:
