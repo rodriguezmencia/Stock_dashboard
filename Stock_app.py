@@ -41,7 +41,7 @@ if submit_code:
         df['MA_15'] = df['Close'].rolling(window=15).mean()
         df['MA_5'] = df['Close'].rolling(window=5).mean()
 
-        col1,col2 = st.columns([3, 1])
+        col1,col2 = st.columns([0.8, 0.2])
         
         with col1:
             fig = make_subplots(rows=2, cols=1,
