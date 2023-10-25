@@ -93,7 +93,8 @@ if submit_code:
             
         with col2:
             st.markdown("**Summary**")
-            stock_now=stock.history(period='1d').reset_index()['Close']
+            stock_now=stock.history(period='1d').iloc[-1]["Close"]
+            #stock_data.iloc[-1]["Close"]
             st.write(stock_now)
             
 
