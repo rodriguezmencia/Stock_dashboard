@@ -115,7 +115,8 @@ if submit_code:
         conection.commit()
         conection.close()
         #-------------
-        
+
+	#-------------Part 1
         st.markdown("**Summary - Current market information**")
         col1,col2,col3,col4 = st.columns([0.25,0.25,0.25,0.25])
         with col1:
@@ -131,10 +132,12 @@ if submit_code:
         with col4:
             st.markdown(f"**Date**")
             st.write(f'<p style="color:black">{formatted_time}</p>', unsafe_allow_html=True)
-        
+
+	#-------------Part 2
         st.markdown("**Historical price evolution**")
         st.plotly_chart(fig,use_container_width=True)
 
+	#-------------Part 3
         st.markdown("**Data Analysis**")
         conn = sqlite3.connect('hist_price.sqlite')
         c = conn.cursor()
@@ -143,8 +146,7 @@ if submit_code:
 	        c.execute(raw_code)
 	        data = c.fetchall()
 	        return data 
-        
-	data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
+        data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
 	
 	# Columns/Layout
 	col1,col2 = st.columns(2)
