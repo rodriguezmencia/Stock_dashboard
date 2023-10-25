@@ -85,6 +85,7 @@ if submit_code:
         if MA_30:
             fig.add_trace(go.Scatter(x=df.index, y=df['MA_30'], line=dict(color='red', width=1), name='MA 30'),
                       row=1, col=1)
+            st.plotly_chart(fig,use_container_width=True)
         
         # Add the 15-period moving average line
         fig.add_trace(go.Scatter(x=df.index, y=df['MA_15'], line=dict(color='purple', width=1), name='MA 15'),
