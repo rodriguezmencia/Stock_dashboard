@@ -53,7 +53,9 @@ if submit_code:
           high=df['High'],
           low=df['Low'],
           close=df['Close']),row=1,col=1)
-    
+        
+        
+        
         # Add the 30-period moving average line
         fig.add_trace(go.Scatter(x=df.index, y=df['MA_30'], line=dict(color='red', width=1), name='MA 30'),
                       row=1, col=1)
@@ -83,7 +85,7 @@ if submit_code:
         fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
         
         
-        fig.show()
+        st.pyplot(fig)
         
         
         # In[11]:
