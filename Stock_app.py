@@ -33,8 +33,8 @@ st.markdown("""---""")
 # plot
 if submit_code:
     if symbol:
-        stock=yf.Ticker(symbol)
-        df=stock.history(interval=inter, start=init, end=finish)
+        stock = yf.Ticker(symbol)
+        df = stock.history(interval=inter, start=init, end=finish)
         st.write(df)
         
         # Calculate the 30/15/5-period moving average
@@ -215,5 +215,6 @@ if submit_code:
         
         adj_close_long.to_sql('prices', con, if_exists='append', index=False)
         volume_long.to_sql('volume', con, if_exists='append', index=False)
-        
-    
+
+    else:
+        st.write("please enter a valid stock symbol")
