@@ -120,17 +120,7 @@ if submit_code:
         st.markdown("**Historical price evolution**")
         st.plotly_chart(fig,use_container_width=True)
 
-        st.markdown("**Analyze data**")
-        #from datetime import datetime
-        #import time
-        
-        
-        ##Current price
-        #print(datetime.now())
-        #display(stock.history(period='1d'))
-        #time.sleep(60)
-        #print(datetime.now())
-        #display(stock.history(period='1d'))
+        st.markdown("**Data Analysis**")
         
         #Major stakeholders
         #stock.institutional_holders
