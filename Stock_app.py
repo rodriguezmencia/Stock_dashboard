@@ -12,6 +12,7 @@ from plotly.subplots import make_subplots
 import datetime
 from datetime import datetime
 import time
+import yfinance as yf
 
 #Streamlit app
 # sidebar
