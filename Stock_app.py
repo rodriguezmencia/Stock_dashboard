@@ -147,9 +147,9 @@ if submit_code:
 	        data = c.fetchall()
 	        return data 
         data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
-	col1,col2 = st.columns(2)
+	col5,col6 = st.columns(2)
 	# query
-	with col1:
+	with col5:
 		with st.form(key='query_form'):
 			raw_code = st.text_area("SQL Code Here")
 			submit_code = st.form_submit_button("Execute")
@@ -158,7 +158,7 @@ if submit_code:
 			table_info = {'Stock infor':data_struc}
 			st.json(table_info)
 	# Results Layouts
-	with col2:
+	with col6:
 		if submit_code:
 			st.info("Query Submitted")
 			st.code(raw_code)
