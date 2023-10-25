@@ -42,6 +42,7 @@ if submit_code:
         df['MA_5'] = df['Close'].rolling(window=5).mean()
 
         col1,col2 = st.columns([3, 1])
+        
         with col1:
             fig = make_subplots(rows=2, cols=1,
                                 shared_xaxes=True,
@@ -54,7 +55,24 @@ if submit_code:
               high=df['High'],
               low=df['Low'],
               close=df['Close']),row=1,col=1)
+                fig.add_trace(go.Bar(x=df.index,
+                             y=df['Volume'],
+                             marker_color='blue'), row=2, col=1)
         
+            fig.update_layout(
+                title=symbol,
+                xaxis_rangeslider_visible=False,
+                showlegend=False)
+            
+            fig.update_yaxes(title_text="stock price", row=1, col=1)
+            fig.update_yaxes(title_text="volumen", row=2, col=1)
+            fig.update_xaxes(title_text='Date', row=2, col=1)
+            
+            # hide weekends without transactions
+            fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
+            
+            st.plotly_chart(fig)
+            
         with col2:
             MA_30 = st.checkbox('Moving avg 30 days')
             MA_15 = st.checkbox('Moving avg 15 days')
@@ -74,28 +92,7 @@ if submit_code:
         fig.add_trace(go.Scatter(x=df.index, y=df['MA_5'], line=dict(color='blue', width=1), name='MA 5'),
                       row=1, col=1)
         
-        fig.add_trace(go.Bar(x=df.index,
-                             y=df['Volume'],
-                             marker_color='blue'), row=2, col=1)
-        
-        fig.update_layout(
-            title=symbol,
-            xaxis_rangeslider_visible=False,
-            showlegend=False)
-        
-        fig.update_yaxes(title_text="stock price", row=1, col=1)
-        fig.update_yaxes(title_text="volumen", row=2, col=1)
-        fig.update_xaxes(title_text='Date', row=2, col=1)
-        
-        # hide weekends without transactions
-        fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
-        
-        
-        st.plotly_chart(fig)
-        
-        
-        # In[11]:
-        
+
         
         from datetime import datetime
         import time
