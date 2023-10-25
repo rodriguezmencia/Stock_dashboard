@@ -29,8 +29,8 @@ with st.sidebar:
     finish=st.date_input("Enter the finish date [YYYY-MM-DD]:", )#datetime.date(2019, 7, 6)
     submit_code = st.form_button("Execute")
 
-if submit_code:
-    st.write("Hello")
+#if submit_code:
+#    st.write("Hello")
 
 # In[13]:
 
