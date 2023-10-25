@@ -8,6 +8,4 @@ bokeh
 pillow
 opencv-python
 jupyter
-nltk
-scikit-learn
 yfinance
