@@ -110,16 +110,16 @@ if submit_code:
             st.markdown(f"**Intraday var.%**")
             st.write(f'<p style="color:{text_color}">{formatted_var}</p>', unsafe_allow_html=True)
         with col3:
-            st.markdown(f"**Volume")
+            st.markdown(f"**Volume**")
             st.write(f'<p style="color:black">{formatted_vol_now}</p>', unsafe_allow_html=True)
         with col4:
-            st.markdown(f"**Date")
+            st.markdown(f"**Date**")
             st.write(f'<p style="color:black">{formatted_time}</p>', unsafe_allow_html=True)
         
         st.plotly_chart(fig,use_container_width=True)
         
-        from datetime import datetime
-        import time
+        #from datetime import datetime
+        #import time
         
         
         ##Current price
@@ -130,8 +130,8 @@ if submit_code:
         #display(stock.history(period='1d'))
         
         #Major stakeholders
-        stock.institutional_holders
-        stock.mutualfund_holders
+        #stock.institutional_holders
+        #stock.mutualfund_holders
         
     else:
         st.write("please enter a valid stock symbol")
