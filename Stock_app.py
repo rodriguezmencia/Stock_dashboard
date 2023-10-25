@@ -111,14 +111,14 @@ if submit_code:
 
         #2.-insert new dataset
         df2=df.reset_index()
-	df2=df2.to_records(index=False)
-	df2.to_sql('hist_price', conection, if_exists='append', index=False)
+        df2=df2.to_records(index=False)
+        df2.to_sql('hist_price', conection, if_exists='append', index=False)
 
         conection.commit()
         conection.close()
         #-------------
 
-	#-------------Part 1
+    #-------------Part 1
         st.markdown("**Summary - Current market information**")
         col1,col2,col3,col4 = st.columns([0.25,0.25,0.25,0.25])
         with col1:
