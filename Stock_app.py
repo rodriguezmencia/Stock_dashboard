@@ -86,7 +86,7 @@ if submit_code:
         # hide weekends without transactions
         fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
         
-        time=datetime.datetime.now()
+        time=datetime.now()
         new_stock=stock.history(period='1d')
         
         stock_now=new_stock.iloc[-1]["Close"] #stock.history(period='1d').iloc[-1]["Close"]
