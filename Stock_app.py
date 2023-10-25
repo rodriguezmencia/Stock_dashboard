@@ -3,7 +3,7 @@
 #------------------------------
 import streamlit as st
 import pandas as pd
-#import sqlite3
+import sqlite3
 import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
@@ -100,6 +100,21 @@ if submit_code:
         formatted_time = time.strftime("%Y-%m-%d, %H:%M:%S")
         formatted_var = "{:.2%}".format(var)
         text_color = "green" if var > 0 else "red"
+
+        #-------------
+        #sql procedure
+        #-------------
+        #1.- drop data
+        conection = sqlite3.connect('data.sqlite')
+        cursor = conection.cursor()
+        cursor.execute("DELETE FROM hist_price")
+
+        #2.-insert new dataset
+        df.reset_index().to_sql('hist_price', con, if_exists='append', index=False)
+
+        conection.commit()
+        conection.close()
+        #-------------
         
         st.markdown("**Summary - Current market information**")
         col1,col2,col3,col4 = st.columns([0.25,0.25,0.25,0.25])
@@ -121,7 +136,45 @@ if submit_code:
         st.plotly_chart(fig,use_container_width=True)
 
         st.markdown("**Data Analysis**")
-        
+        conn = sqlite3.connect('hist_price.sqlite')
+        c = conn.cursor()
+        # Fxn Make Execution
+        def sql_executor(raw_code):
+	        c.execute(raw_code)
+	        data = c.fetchall()
+	        return data 
+        data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
+
+        		# Columns/Layout
+		col1,col2 = st.columns(2)
+
+		with col1:
+			with st.form(key='query_form'):
+				raw_code = st.text_area("SQL Code Here")
+				submit_code = st.form_submit_button("Execute")
+
+			# Table of Info
+
+			with st.expander("Table Info"):
+				table_info = {'Stock infor':data_struc}
+				st.json(table_info)
+			
+		# Results Layouts
+		with col2:
+			if submit_code:
+				st.info("Query Submitted")
+				st.code(raw_code)
+
+				# Results 
+				query_results = sql_executor(raw_code)
+				with st.expander("Results"):
+					st.write(query_results)
+
+				with st.expander("Pretty Table"):
+					query_df = pd.DataFrame(query_results)
+					st.dataframe(query_df)
+        #----------------------------------------------------------------------------------------------
+    
         #Major stakeholders
         #stock.institutional_holders
         #stock.mutualfund_holders
