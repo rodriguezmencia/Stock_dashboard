@@ -94,7 +94,7 @@ if submit_code:
         with col2:
             st.markdown("**Summary**")
             stock_now=stock.history(period='1d')
-            st.write(stock_now['Close'])
+            st.dataframe(stock_now['Close'])
             
 
         
