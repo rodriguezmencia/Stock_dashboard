@@ -115,7 +115,7 @@ if submit_code:
         stock.mutualfund_holders
         
         
-        stock.dividends.tail()
+        #stock.dividends.tail()
         
         
         # ### SQLite
