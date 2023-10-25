@@ -90,7 +90,7 @@ if submit_code:
         stock_now=stock.history(period='1d').iloc[-1]["Close"]
         stock_beg=stock.history(period='1d').iloc[-1]["Open"]
         vol_now=stock.history(period='1d').iloc[-1]["Volume"]
-        date=stock.history(period='1d').iloc[-1]["Date"]
+        date=stock.history(period='1d').reset_index().iloc[-1]["Date"]
         var=stock_beg/stock_now-1
         st.markdown("**Summary**")
         col1,col2,col3,col4 = st.columns([0.25,0.25,0.25,0.25])
