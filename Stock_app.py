@@ -96,7 +96,7 @@ if submit_code:
         col1,col2,col3,col4 = st.columns([0.25,0.25,0.25,0.25])
         with col1:
             #st.plotly_chart(fig,use_container_width=True)
-            st.markdown("###Price")
+            st.markdown('''###Price''')
             st.write(stock_now)
         with col2:
             st.markdown("**Intra day var.%")
