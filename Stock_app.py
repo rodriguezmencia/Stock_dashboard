@@ -35,29 +35,35 @@ if submit_code:
     if symbol:
         stock = yf.Ticker(symbol)
         df = stock.history(interval=inter, start=init, end=finish)
-        #st.dataframe(df)
-        
+
         # Calculate the 30/15/5-period moving average
         df['MA_30'] = df['Close'].rolling(window=30).mean()
         df['MA_15'] = df['Close'].rolling(window=15).mean()
         df['MA_5'] = df['Close'].rolling(window=5).mean()
 
-        fig = make_subplots(rows=2, cols=1,
-                            shared_xaxes=True,
-                            vertical_spacing=0.1,
-                            subplot_titles=("Stock Price","Volumen"),
-                            row_heights=[0.5,0.2])
-    
-        fig.add_trace(go.Candlestick(x=df.index,
-          open=df['Open'],
-          high=df['High'],
-          low=df['Low'],
-          close=df['Close']),row=1,col=1)
+        col1,col2 = st.columns([3, 1])
+        with col1:
+            fig = make_subplots(rows=2, cols=1,
+                                shared_xaxes=True,
+                                vertical_spacing=0.1,
+                                subplot_titles=("Stock Price","Volumen"),
+                                row_heights=[0.5,0.2])
         
+            fig.add_trace(go.Candlestick(x=df.index,
+              open=df['Open'],
+              high=df['High'],
+              low=df['Low'],
+              close=df['Close']),row=1,col=1)
         
+        with col2:
+            MA_30 = st.checkbox('Moving avg 30 days')
+            MA_15 = st.checkbox('Moving avg 15 days')
+            MA_5 = st.checkbox('Moving avg 5 days')
+
         
         # Add the 30-period moving average line
-        fig.add_trace(go.Scatter(x=df.index, y=df['MA_30'], line=dict(color='red', width=1), name='MA 30'),
+        if MA_30:
+            fig.add_trace(go.Scatter(x=df.index, y=df['MA_30'], line=dict(color='red', width=1), name='MA 30'),
                       row=1, col=1)
         
         # Add the 15-period moving average line
