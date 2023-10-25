@@ -117,8 +117,10 @@ if submit_code:
             st.markdown(f"**Date**")
             st.write(f'<p style="color:black">{formatted_time}</p>', unsafe_allow_html=True)
         
+        st.markdown("**Historical price evolution**")
         st.plotly_chart(fig,use_container_width=True)
-        
+
+        st.markdown("**Analyze data**")
         #from datetime import datetime
         #import time
         
