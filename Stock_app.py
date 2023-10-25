@@ -133,49 +133,45 @@ if submit_code:
             st.markdown(f"**Date**")
             st.write(f'<p style="color:black">{formatted_time}</p>', unsafe_allow_html=True)
 
-	#-------------Part 2
+    #-------------Part 2
         st.markdown("**Historical price evolution**")
         st.plotly_chart(fig,use_container_width=True)
-	    
-	#-------------Part 3
-	st.markdown("**Data Analysis**")
-	conn = sqlite3.connect('hist_price.sqlite')
-	c = conn.cursor()
-        
-	# Fxn Make Execution
-        def sql_executor(raw_code):
-	        c.execute(raw_code)
-	        data = c.fetchall()
-	        return data 
-        data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
-		
-	col5,col6 = st.columns(2)
-	# query
-	with col5:
-		with st.form(key='query_form'):
-			raw_code = st.text_area("SQL Code Here")
-			submit_code = st.form_submit_button("Execute")
-		# Table of Info
-		with st.expander("Table Info"):
-			table_info = {'Stock infor':data_struc}
-			st.json(table_info)
-		# Results Layouts
-		with col6:
-			if submit_code:
-				st.info("Query Submitted")
-				st.code(raw_code)
-				# Results 
-				query_results = sql_executor(raw_code)
-				with st.expander("Results"):
-					st.write(query_results)
-				with st.expander("Pretty Table"):
-					query_df = pd.DataFrame(query_results)
-					st.dataframe(query_df)
-        #----------------------------------------------------------------------------------------------
     
-        #Major stakeholders
-        #stock.institutional_holders
-        #stock.mutualfund_holders
+    #-------------Part 3
+        st.markdown("**Data Analysis**")
+        conn = sqlite3.connect('hist_price.sqlite')
+        c = conn.cursor()
+        
+    # Fxn Make Execution
+        def sql_executor(raw_code):
+            c.execute(raw_code)
+            data = c.fetchall()
+            return data 
+        data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
+
+        col5,col6 = st.columns(2)
+    # query
+        with col5:
+            with st.form(key='query_form'):
+                raw_code = st.text_area("SQL Code Here")
+                submit_code = st.form_submit_button("Execute")
+            # Table of Info
+            with st.expander("Table Info"):
+                table_info = {'Stock infor':data_struc}
+                st.json(table_info)
+        # Results Layouts
+        with col6:
+            if submit_code:
+                st.info("Query Submitted")
+                st.code(raw_code)
+                # Results 
+                query_results = sql_executor(raw_code)
+                with st.expander("Results"):
+                    st.write(query_results)
+                with st.expander("Pretty Table"):
+                    query_df = pd.DataFrame(query_results)
+                    st.dataframe(query_df)
+        #----------------------------------------------------------------------------------------------
         
     else:
         st.write("please enter a valid stock symbol")
