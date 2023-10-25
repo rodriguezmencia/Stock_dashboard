@@ -23,10 +23,11 @@ with st.sidebar.form(key ='Form1'):
     ('1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', '1d', '5d', '1wk', '1mo', '3mo'))
     init = st.date_input("Enter the start date [YYYY-MM-DD]:", ) #datetime.date(2019, 7, 6)
     finish=st.date_input("Enter the finish date [YYYY-MM-DD]:", )#datetime.date(2019, 7, 6)
-    st.markdown("**Analytics**")
-    MA_30 = st.checkbox('MA-30 d')
-    MA_15 = st.checkbox('MA-15 d')
-    MA_5 = st.checkbox('MA-5 d')
+    
+    with st.expander(f"**Analytics**"):
+        MA_30 = st.checkbox('MA-30 d')
+        MA_15 = st.checkbox('MA-15 d')
+        MA_5 = st.checkbox('MA-5 d')
     
     submit_code = st.form_submit_button(label ="Execute")
 
