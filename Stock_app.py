@@ -85,7 +85,7 @@ if submit_code:
         fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
         
         
-        st.pyplot(fig)
+        st.plotly_chart(fig)
         
         
         # In[11]:
