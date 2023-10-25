@@ -105,9 +105,9 @@ if submit_code:
         #sql procedure
         #-------------
         #1.- drop data
-        conection = sqlite3.connect('data.sqlite')
+        conection = sqlite3.connect('Stock.sqlite')
         cursor = conection.cursor()
-        cursor.execute("DELETE * FROM hist_price")
+        cursor.execute("DELETE FROM hist_price")
 
         #2.-insert new dataset
         df.reset_index().to_sql('hist_price', con, if_exists='append', index=False)
