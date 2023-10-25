@@ -143,9 +143,10 @@ if submit_code:
 	        c.execute(raw_code)
 	        data = c.fetchall()
 	        return data 
-        data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
-
-		# Columns/Layout
+        
+	data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
+	
+	# Columns/Layout
 	col1,col2 = st.columns(2)
 
 	with col1:
