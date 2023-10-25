@@ -35,7 +35,7 @@ if submit_code:
     if symbol:
         stock = yf.Ticker(symbol)
         df = stock.history(interval=inter, start=init, end=finish)
-        st.write(df)
+        st.dataframe(df)
         
         # Calculate the 30/15/5-period moving average
         df['MA_30'] = df['Close'].rolling(window=30).mean()
