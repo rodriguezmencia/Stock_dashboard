@@ -32,7 +32,6 @@ st.markdown("""---""")
 
 # plot
 if submit_code:
-    st.write("Hello")
     stock=yf.Ticker(symbol)
     df=stock.history(interval=inter, start=init, end=finish)
     st.write(df)
