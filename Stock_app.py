@@ -59,7 +59,7 @@ if submit_code:
             fig.add_trace(go.Bar(x=df.index,
                              y=df['Volume'],
                              marker_color='blue'), row=2, col=1)
-        
+            
             fig.update_layout(
                 title=symbol,
                 xaxis_rangeslider_visible=False,
