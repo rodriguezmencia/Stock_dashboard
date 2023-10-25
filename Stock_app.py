@@ -3,7 +3,7 @@
 #------------------------------
 import streamlit as st
 import pandas as pd
-import sqlite3
+#import sqlite3
 import yfinance as yf
 import seaborn as sns
 import matplotlib.pyplot as plt
