@@ -110,7 +110,7 @@ if submit_code:
         cursor.execute("DELETE FROM hist_price")
 
         #2.-insert new dataset
-        df.reset_index().to_sql('hist_price', con, if_exists='append', index=False)
+        df.reset_index().to_sql('hist_price', conection, if_exists='append', index=False)
 
         conection.commit()
         conection.close()
