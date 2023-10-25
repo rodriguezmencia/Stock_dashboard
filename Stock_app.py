@@ -97,11 +97,11 @@ if submit_code:
         
         
         ##Current price
-        print(datetime.now())
-        display(stock.history(period='1d'))
-        time.sleep(60)
-        print(datetime.now())
-        display(stock.history(period='1d'))
+        #print(datetime.now())
+        #display(stock.history(period='1d'))
+        #time.sleep(60)
+        #print(datetime.now())
+        #display(stock.history(period='1d'))
         
         
         # In[ ]:
