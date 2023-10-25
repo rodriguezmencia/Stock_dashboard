@@ -5,5 +5,3 @@ seaborn
 plotly
 opencv-python
 yfinance
-date
-time
