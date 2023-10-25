@@ -93,6 +93,8 @@ if submit_code:
         stock_beg=new_stock.iloc[-1]["Open"] #stock.history(period='1d').iloc[-1]["Open"]
         vol_now=new_stock.iloc[-1]["Volume"] #stock.history(period='1d').iloc[-1]["Volume"]
         var=stock_now/stock_beg-1
+        
+        formatted_stock_now = "{:.2f}".format(stock_now)
         formatted_var = "{:.2%}".format(var)
         text_color = "green" if var > 0 else "red"
         
@@ -101,7 +103,7 @@ if submit_code:
         with col1:
             #st.plotly_chart(fig,use_container_width=True)
             st.markdown(f"**Price (USD)**")
-            st.write(f'<p style="color:{black}">{stock_now}</p>', unsafe_allow_html=True)#st.write(stock_now)
+            st.write(f'<p style="color:black">{formatted_stock_now}</p>', unsafe_allow_html=True)
         with col2:
             st.markdown(f"**Intraday var.%**")
             st.write(f'<p style="color:{text_color}">{formatted_var}</p>', unsafe_allow_html=True)
