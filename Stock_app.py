@@ -60,6 +60,11 @@ if submit_code:
                              y=df['Volume'],
                              marker_color='blue'), row=2, col=1)
             
+            # Add the 30-period moving average line
+            if MA_30:
+                fig.add_trace(go.Scatter(x=df.index, y=df['MA_30'], line=dict(color='red', width=1), name='MA 30'),
+                          row=1, col=1)
+            
             fig.update_layout(
                 title=symbol,
                 xaxis_rangeslider_visible=False,
@@ -71,21 +76,17 @@ if submit_code:
             
             # hide weekends without transactions
             fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
-            
+        
             st.plotly_chart(fig,use_container_width=True)
             
         with col2:
-            st.write("Select some analytics")
-            MA_30 = st.checkbox('Moving avg 30 days')
-            MA_15 = st.checkbox('Moving avg 15 days')
-            MA_5 = st.checkbox('Moving avg 5 days')
+            st.markdown("Analytics")
+            MA_30 = st.checkbox('MA-30 d')
+            MA_15 = st.checkbox('MA-15 d')
+            MA_5 = st.checkbox('MA-5 d')
 
         
-        # Add the 30-period moving average line
-        if MA_30:
-            fig.add_trace(go.Scatter(x=df.index, y=df['MA_30'], line=dict(color='red', width=1), name='MA 30'),
-                      row=1, col=1)
-            st.plotly_chart(fig,use_container_width=True)
+
         
         # Add the 15-period moving average line
         fig.add_trace(go.Scatter(x=df.index, y=df['MA_15'], line=dict(color='purple', width=1), name='MA 15'),
