@@ -86,18 +86,29 @@ if submit_code:
         # hide weekends without transactions
         fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
         
-        col1,col2 = st.columns([0.8, 0.2])
         
+        stock_now=stock.history(period='1d').iloc[-1]["Close"]
+        stock_beg=stock.history(period='1d').iloc[-1]["Open"]
+        vol_now=stock.history(period='1d').iloc[-1]["Volume"]
+        date=now()
+        var=stock_beg/stock_now-1
+        st.markdown("**Summary**")
+        col1,col2,col3,col4 = st.columns([0.25,0.25,0.25,0.25])
         with col1:
-            st.plotly_chart(fig,use_container_width=True)
-            
-        with col2:
-            st.markdown("**Summary**")
-            stock_now=stock.history(period='1d').iloc[-1]["Close"]
-            #stock_data.iloc[-1]["Close"]
+            #st.plotly_chart(fig,use_container_width=True)
+            st.markdown("**Price")
             st.write(stock_now)
-            
-
+        with col2:
+            st.markdown("**Intra day var.%")
+            st.write(var)
+        with col3:
+            st.markdown("**Volume")
+            st.write(vol_now)
+        with col4:
+            st.markdown("**Date")
+            st.write(date)
+        
+        st.plotly_chart(fig,use_container_width=True)
         
         from datetime import datetime
         import time
