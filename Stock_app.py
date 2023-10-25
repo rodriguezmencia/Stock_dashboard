@@ -107,10 +107,10 @@ if submit_code:
             st.markdown(f"**Price (USD)**")
             st.write(f'<p style="color:black">{formatted_stock_now}</p>', unsafe_allow_html=True)
         with col2:
-            st.markdown(f"**Intraday var.%**")
+            st.markdown(f"**Intraday var.(%)**")
             st.write(f'<p style="color:{text_color}">{formatted_var}</p>', unsafe_allow_html=True)
         with col3:
-            st.markdown(f"**Volume**")
+            st.markdown(f"**Volume (MM$)**")
             st.write(f'<p style="color:black">{formatted_vol_now}</p>', unsafe_allow_html=True)
         with col4:
             st.markdown(f"**Date**")
