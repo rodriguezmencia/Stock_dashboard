@@ -1,0 +1,14 @@
+numpy
+pandas
+matplotlib
+seaborn
+plotly
+altair
+bokeh
+pillow
+opencv-python
+jupyter
+sklearn
+yfinance
+date
+time
