@@ -75,6 +75,7 @@ if submit_code:
             st.plotly_chart(fig)
             
         with col2:
+            st.write("Select some analytics")
             MA_30 = st.checkbox('Moving avg 30 days')
             MA_15 = st.checkbox('Moving avg 15 days')
             MA_5 = st.checkbox('Moving avg 5 days')
