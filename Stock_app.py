@@ -105,7 +105,7 @@ if submit_code:
         #sql procedure
         #-------------
         #1.- drop data
-        conection = sqlite3.connect('Stock.sqlite')
+        conection = sqlite3.connect('stock.sqlite')
         cursor = conection.cursor()
         cursor.execute("DELETE FROM hist_price")
 
@@ -139,7 +139,7 @@ if submit_code:
     
     #-------------Part 3
         st.markdown("**Data Analysis**")
-        conn = sqlite3.connect('hist_price.sqlite')
+        conn = sqlite3.connect('stock.sqlite')
         c = conn.cursor()
         
     # Fxn Make Execution
