@@ -42,7 +42,7 @@ with col5:
 # Results Layouts
 with col6:
     if submit_code2:
-.        st.info("Query Submitted")
+        st.info("Query Submitted")
         st.code(raw_code)
         # Results 
         query_results = sql_executor(raw_code)
