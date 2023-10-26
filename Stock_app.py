@@ -174,6 +174,7 @@ with tab2:
             with st.form(key='query_form'):
                 raw_code = st.text_area("SQL Code Here")
                 submit_code2 = st.form_submit_button("Execute")
+                st.warning('when you press the button, the plot of general info will dissapear', icon="⚠️")
             # Table of Info
             with st.expander("Table Info"):
                 table_info = {'hist_price':data_struc}
