@@ -110,9 +110,6 @@ if submit_code:
         cursor.execute("DELETE FROM hist_price")
 
         #2.-insert new dataset
-        #df.reset_index(inplace=True)
-        #df2=df.reset_index()
-        #df2=df2.to_records(index=False)
         df.reset_index().to_sql('hist_price', conection, if_exists='append', index=False)
 
         conection.commit()
@@ -150,21 +147,21 @@ if submit_code:
             c.execute(raw_code)
             data = c.fetchall()
             return data 
-        data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits']
+        data_struc = ['Date','Open','High','Low','Close','Volume','Dividends','Stock Splits','MA_30','MA_15','MA_5']
 
         col5,col6 = st.columns(2)
     # query
         with col5:
             with st.form(key='query_form'):
                 raw_code = st.text_area("SQL Code Here")
-                submit_code = st.form_submit_button("Execute")
+                submit_code2 = st.form_submit_button("Execute")
             # Table of Info
             with st.expander("Table Info"):
-                table_info = {'Stock infor':data_struc}
+                table_info = {'hist_price':data_struc}
                 st.json(table_info)
         # Results Layouts
         with col6:
-            if submit_code:
+            if submit_code2:
                 st.info("Query Submitted")
                 st.code(raw_code)
                 # Results 
