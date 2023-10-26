@@ -141,10 +141,11 @@ with tab1:
         else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
-            st.markdown("**Data Analysis**")
-            conn = sqlite3.connect('stock.sqlite')
-            c = conn.cursor()
-    with tab2:            
+with tab2: 
+        st.markdown("**Data Analysis**")
+        conn = sqlite3.connect('stock.sqlite')
+        c = conn.cursor()
+           
         # Fxn Make Execution
         def sql_executor(raw_code):
             c.execute(raw_code)
