@@ -158,7 +158,7 @@ with tab1:
         with col5:
             with st.form(key='query_form'):
                 raw_code = st.text_area("SQL Code Here")
-                #submit_code2 = st.form_submit_button("Execute")
+                submit_code2 = st.form_submit_button("Execute")
             # Table of Info
             with st.expander("Table Info"):
                 table_info = {'hist_price':data_struc}
