@@ -196,6 +196,7 @@ with tab2:
                 with st.expander("Pretty Table"):
                     query_df = pd.DataFrame(query_results)
                     st.dataframe(query_df)
+                st.rerun()
         #----------------------------------------------------------------------------------------------
             
 
