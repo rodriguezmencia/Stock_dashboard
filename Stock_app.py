@@ -33,6 +33,7 @@ with st.sidebar.form(key ='Form1'):
         MA_5 = st.checkbox('MA-5 d')
     
     submit_code = st.form_submit_button(label ="Execute")
+    submit_code3 = st.form_submit_button(label ="Load data")
 #------------------------------------------------------------------------------------------
 @st.cache
 def lee(symbol,interval,start,end):
