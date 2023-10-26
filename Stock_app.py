@@ -33,7 +33,7 @@ with st.sidebar.form(key ='Form1'):
     
     submit_code = st.form_submit_button(label ="Execute")
 #------------------------------------------------------------------------------------------
-@cache
+@st.cache
 def lee(symbol,interval,start,end):
     stock = yf.Ticker(symbol)
     df = stock.history(interval=interval, start=start, end=end)
