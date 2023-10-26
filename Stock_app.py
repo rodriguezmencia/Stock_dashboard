@@ -58,7 +58,7 @@ with tab1:
     # title
     st.subheader("Stock Analytics")
     st.markdown("""---""")
-    
+    chart = None  # Initialize chart variable
     # plot
     if submit_code:
         if symbol:
@@ -159,7 +159,10 @@ with tab1:
     
         #-------------Part 2
             st.markdown("**Historical price evolution**")
-            st.plotly_chart(fig,use_container_width=True)
+            chart = fig  # Update the chart variable
+            if chart is not None:
+                st.plotly_chart(chart, use_container_width=True)
+            #st.plotly_chart(fig,use_container_width=True)
         else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
