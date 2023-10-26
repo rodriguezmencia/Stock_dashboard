@@ -154,23 +154,23 @@ if submit_code:
         with col5:
             with st.form(key='query_form'):
                 raw_code = st.text_area("SQL Code Here")
-                submit_code2 = st.form_submit_button("Execute")
+                #submit_code2 = st.form_submit_button("Execute")
             # Table of Info
             with st.expander("Table Info"):
                 table_info = {'hist_price':data_struc}
                 st.json(table_info)
         # Results Layouts
         with col6:
-            if submit_code2:
-                st.info("Query Submitted")
-                st.code(raw_code)
-                # Results 
-                query_results = sql_executor(raw_code)
-                with st.expander("Results"):
-                    st.write(query_results)
-                with st.expander("Pretty Table"):
-                    query_df = pd.DataFrame(query_results)
-                    st.dataframe(query_df)
+            #if submit_code2:
+            st.info("Query Submitted")
+            st.code(raw_code)
+            # Results 
+            query_results = sql_executor(raw_code)
+            with st.expander("Results"):
+                st.write(query_results)
+            with st.expander("Pretty Table"):
+                query_df = pd.DataFrame(query_results)
+                st.dataframe(query_df)
         #----------------------------------------------------------------------------------------------
         
     else:
