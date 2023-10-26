@@ -55,7 +55,7 @@ with tab1:
     # plot
     if submit_code:
         if symbol:
-            lee(symbol,inter,init,finish)
+            df=lee(symbol,inter,init,finish)
             #stock = yf.Ticker(symbol)
             #df = stock.history(interval=inter, start=init, end=finish)
     
