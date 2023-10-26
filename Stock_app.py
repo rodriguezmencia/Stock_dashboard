@@ -44,6 +44,11 @@ def lee(symbol,interval,start,end):
     
     return df
 
+@st.cache
+def lee_hoy(symbol):
+    stock = yf.Ticker(symbol)
+    new_stock = stock.history(period='1d')
+    return new_stock
 
 #main page
 tab1, tab2 = st.tabs(["General info", "Detailed info"])
@@ -105,7 +110,7 @@ with tab1:
             fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
             
             time=datetime.now()
-            new_stock=stock.history(period='1d')
+            new_stock=lee_hoy(symbol)#stock.history(period='1d')
             
             stock_now=new_stock.iloc[-1]["Close"] #stock.history(period='1d').iloc[-1]["Close"]
             stock_beg=new_stock.iloc[-1]["Open"] #stock.history(period='1d').iloc[-1]["Open"]
