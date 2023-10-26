@@ -14,7 +14,7 @@ from datetime import datetime
 import time
 import yfinance as yf
 
-st.set_page_config(page_title="Stock app")
+#st.set_page_config(page_title="Stock app")
 
 #Streamlit app
 #------------------------------------------------------------------------------------------
@@ -44,7 +44,6 @@ def lee(symbol,interval,start,end):
     df['MA_30'] = df['Close'].rolling(window=30).mean()
     df['MA_15'] = df['Close'].rolling(window=15).mean()
     df['MA_5'] = df['Close'].rolling(window=5).mean()
-    
     return df
 
 @st.cache
@@ -63,13 +62,6 @@ with tab1:
     if submit_code:
         if symbol:
             df=lee(symbol,inter,init,finish)
-            #stock = yf.Ticker(symbol)
-            #df = stock.history(interval=inter, start=init, end=finish)
-    
-            # Calculate the 30/15/5-period moving average
-            #df['MA_30'] = df['Close'].rolling(window=30).mean()
-            #df['MA_15'] = df['Close'].rolling(window=15).mean()
-            #df['MA_5'] = df['Close'].rolling(window=5).mean()
     
             # Main plot
             fig = make_subplots(rows=2, cols=1,
@@ -112,11 +104,11 @@ with tab1:
             fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
             
             time=datetime.now()
-            new_stock=lee_hoy(symbol)#stock.history(period='1d')
+            new_stock=lee_hoy(symbol)
             
-            stock_now=new_stock.iloc[-1]["Close"] #stock.history(period='1d').iloc[-1]["Close"]
-            stock_beg=new_stock.iloc[-1]["Open"] #stock.history(period='1d').iloc[-1]["Open"]
-            vol_now=new_stock.iloc[-1]["Volume"] #stock.history(period='1d').iloc[-1]["Volume"]
+            stock_now=new_stock.iloc[-1]["Close"] 
+            stock_beg=new_stock.iloc[-1]["Open"] 
+            vol_now=new_stock.iloc[-1]["Volume"] 
             var=stock_now/stock_beg-1
             
             formatted_stock_now = "{:.2f}".format(stock_now)
@@ -159,10 +151,7 @@ with tab1:
     
         #-------------Part 2
             st.markdown("**Historical price evolution**")
-            chart = fig  # Update the chart variable
-            if submit_code or (chart is not None and not submit_code2):
-                st.plotly_chart(chart, use_container_width=True)
-            #st.plotly_chart(fig,use_container_width=True)
+            st.plotly_chart(fig,use_container_width=True)
         else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
