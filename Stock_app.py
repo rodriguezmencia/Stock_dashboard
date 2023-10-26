@@ -54,7 +54,6 @@ def lee_hoy(symbol):
 #main page
 tab1, tab2 = st.tabs(["General info", "Detailed info"])
 with tab1:
-    st.rerun()
     # title
     st.subheader("Stock Analytics")
     st.markdown("""---""")
