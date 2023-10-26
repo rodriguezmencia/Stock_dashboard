@@ -15,7 +15,9 @@ import time
 import yfinance as yf
 
 #Streamlit app
-# sidebar
+#------------------------------------------------------------------------------------------
+#-----------------------------------------SIDEBAR------------------------------------------
+#------------------------------------------------------------------------------------------
 with st.sidebar.form(key ='Form1'):
     st.title("Enter information")
     symbol = st.text_input('Stock symbol e.g. GOOG')
@@ -30,6 +32,18 @@ with st.sidebar.form(key ='Form1'):
         MA_5 = st.checkbox('MA-5 d')
     
     submit_code = st.form_submit_button(label ="Execute")
+#------------------------------------------------------------------------------------------
+@cache
+def lee(symbol,interval,start,end):
+    stock = yf.Ticker(symbol)
+    df = stock.history(interval=interval, start=start, end=end)
+    # Calculate the 30/15/5-period moving average
+    df['MA_30'] = df['Close'].rolling(window=30).mean()
+    df['MA_15'] = df['Close'].rolling(window=15).mean()
+    df['MA_5'] = df['Close'].rolling(window=5).mean()
+    
+    return df
+
 
 #main page
 tab1, tab2 = st.tabs(["General info", "Detailed info"])
@@ -41,13 +55,14 @@ with tab1:
     # plot
     if submit_code:
         if symbol:
-            stock = yf.Ticker(symbol)
-            df = stock.history(interval=inter, start=init, end=finish)
+            lee(symbol,inter,init,finish)
+            #stock = yf.Ticker(symbol)
+            #df = stock.history(interval=inter, start=init, end=finish)
     
             # Calculate the 30/15/5-period moving average
-            df['MA_30'] = df['Close'].rolling(window=30).mean()
-            df['MA_15'] = df['Close'].rolling(window=15).mean()
-            df['MA_5'] = df['Close'].rolling(window=5).mean()
+            #df['MA_30'] = df['Close'].rolling(window=30).mean()
+            #df['MA_15'] = df['Close'].rolling(window=15).mean()
+            #df['MA_5'] = df['Close'].rolling(window=5).mean()
     
             # Main plot
             fig = make_subplots(rows=2, cols=1,
