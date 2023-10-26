@@ -34,6 +34,7 @@ with st.sidebar.form(key ='Form1'):
         MA_5 = st.checkbox('MA-5 d')
     
     submit_code = st.form_submit_button(label ="Execute")
+
 #------------------------------------------------------------------------------------------
 @st.cache
 def lee(symbol,interval,start,end):
@@ -58,7 +59,6 @@ with tab1:
     # title
     st.subheader("Stock Analytics")
     st.markdown("""---""")
-    chart = None  # Initialize chart variable
     # plot
     if submit_code:
         if symbol:
