@@ -113,7 +113,7 @@ if submit_code:
         #df.reset_index(inplace=True)
         #df2=df.reset_index()
         #df2=df2.to_records(index=False)
-        df.to_sql('hist_price', conection, if_exists='append', index=False)
+        df.reset_index().to_sql('hist_price', conection, if_exists='append', index=False)
 
         conection.commit()
         conection.close()
