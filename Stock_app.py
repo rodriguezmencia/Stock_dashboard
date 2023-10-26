@@ -160,7 +160,7 @@ with tab1:
         #-------------Part 2
             st.markdown("**Historical price evolution**")
             chart = fig  # Update the chart variable
-            if chart is not None:
+            if chart is not None and not submit_code2:
                 st.plotly_chart(chart, use_container_width=True)
             #st.plotly_chart(fig,use_container_width=True)
         else:
