@@ -236,10 +236,9 @@ with tab3:
     st.write('''This app has the purpose to show stock prices online, to watch basic descriptive analytics, 
         interesting news related the stock, and make specific queries if it is requiered''')
 
-    st.markdown('''
-        **How to use it**
-        You just need to enter the parameters that you need to watch, go to the sidebar and select: **Symbol stock**, initil and end period of analysis,
-        and finally you can customize adding moving average of different periods
+    st.markdown('''**How to use it**''')
+    st.markdown('''You just need to enter the parameters that you need to watch, go to the sidebar and select: **Symbol stock**, **initial and end periods** of analysis,
+        and finally you can customize adding **moving average** of different periods
         ''')
         #----------------------------------------------------------------------------------------------
             
