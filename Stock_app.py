@@ -23,8 +23,6 @@ import yfinance as yf
 with st.sidebar.form(key ='Form1'):
     st.title("Enter information")
     symbol = st.text_input('Stock symbol e.g. GOOG',help='write down the stock symbol that you want to search',value='GOOG')
-    #inter=st.selectbox('Enter the interval of time:',
-    #('1d', '5d', '1wk', '1mo', '3mo'))#'1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', 
     init = st.date_input("Enter the start date [YYYY/MM/DD]:",) 
     finish=st.date_input("Enter the finish date [YYYY/MM/DD]:", )
     
@@ -50,7 +48,8 @@ def lee(symbol,interval,start,end):
 def lee_hoy(symbol):
     stock = yf.Ticker(symbol)
     new_stock = stock.history(period='1d')
-    return new_stock
+    recom = stock.get_recommendations()
+    return new_stock,recom
 
 #main page
 tab1, tab2 = st.tabs(["General info", "Detailed info"])
@@ -104,7 +103,7 @@ with tab1:
             fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
             
             time=datetime.now()
-            new_stock=lee_hoy(symbol)
+            new_stock,recom=lee_hoy(symbol)
             
             stock_now=new_stock.iloc[-1]["Close"] 
             stock_beg=new_stock.iloc[-1]["Open"] 
@@ -152,6 +151,8 @@ with tab1:
         #-------------Part 2
             st.markdown("**Historical price evolution**")
             st.plotly_chart(fig,use_container_width=True)
+        #-------------Part 2.1
+            st.dataframe(recom)
         else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
