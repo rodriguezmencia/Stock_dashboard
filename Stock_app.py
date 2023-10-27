@@ -54,7 +54,7 @@ def lee_hoy(symbol):
 @st.cache
 def recomend(symbol):
     stock = yf.Ticker(symbol)
-    recom = stock.get_recommendations()
+    recom = stock.get_news()
     return recom
 
 
