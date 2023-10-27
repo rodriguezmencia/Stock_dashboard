@@ -134,6 +134,7 @@ with tab1:
                     text_color = "green" if var > 0 else "red"
         
                     recom=recomend(symbol)
+                    
                     #-------------
                     #sql procedure
                     #-------------
@@ -144,7 +145,7 @@ with tab1:
             
                     #2.-insert new dataset
                     columns_to_insert = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'MA_30', 'MA_15', 'MA_5']
-                    df[columns_to_insert].reset_index().to_sql('hist_price', conection, if_exists='append', index=False)
+                    df.reset_index()[columns_to_insert].to_sql('hist_price', conection, if_exists='append', index=False)
             
                     conection.commit()
                     conection.close()
