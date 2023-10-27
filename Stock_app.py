@@ -24,14 +24,14 @@ with st.sidebar.form(key ='Form1'):
     st.title("Enter information")
     symbol = st.text_input('Stock symbol e.g. GOOG')
     inter=st.selectbox('Enter the interval of time:',
-    ('1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', '1d', '5d', '1wk', '1mo', '3mo'))
+    ('1d', '5d', '1wk', '1mo', '3mo'))#'1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', 
     init = st.date_input("Enter the start date [YYYY-MM-DD]:", ) 
     finish=st.date_input("Enter the finish date [YYYY-MM-DD]:", )
     
     with st.expander(f"**Analytics**"):
-        MA_30 = st.checkbox('MA-30 d')
-        MA_15 = st.checkbox('MA-15 d')
-        MA_5 = st.checkbox('MA-5 d')
+        MA_30 = st.checkbox('MA-30')
+        MA_15 = st.checkbox('MA-15')
+        MA_5 = st.checkbox('MA-5')
     
     submit_code = st.form_submit_button(label ="Execute")
 
