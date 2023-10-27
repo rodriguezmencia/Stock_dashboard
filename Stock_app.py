@@ -29,7 +29,7 @@ with st.sidebar.form(key ='Form1'):
     finish=st.date_input("Enter the finish date [YYYY-MM-DD]:", )
     
     with st.expander(f"**Analytics**"):
-        MA_30 = st.checkbox('MA-30')
+        MA_30 = st.checkbox('MA-30',help='moving average 30 last periods')
         MA_15 = st.checkbox('MA-15')
         MA_5 = st.checkbox('MA-5')
     
