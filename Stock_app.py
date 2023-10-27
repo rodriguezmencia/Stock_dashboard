@@ -141,7 +141,7 @@ with tab1:
                     #1.- drop data
                     conection = sqlite3.connect('stock.sqlite')
                     cursor = conection.cursor()
-                    #cursor.execute("DELETE FROM hist_price")
+                    cursor.execute("DELETE FROM hist_price")
             
                     #2.-insert new dataset
                     columns_to_insert = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'MA_30', 'MA_15', 'MA_5']
