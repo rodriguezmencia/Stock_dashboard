@@ -120,8 +120,8 @@ with tab1:
                         showlegend=False)
                     
                 fig.update_yaxes(title_text="stock price", row=1, col=1)
-                fig.update_yaxes(title_text="volumen", row=2, col=1)
-                fig.update_xaxes(title_text='Date', row=2, col=1)
+                fig.update_yaxes(title_text="volume", row=2, col=1)
+                fig.update_xaxes(title_text='date', row=2, col=1)
                     
                 # hide weekends without transactions
                 fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"])])
@@ -168,7 +168,7 @@ with tab1:
                         st.markdown(f"**Price (USD)**")
                         st.write(f'<p style="color:black">{formatted_stock_now}</p>', unsafe_allow_html=True)
                     with col2:
-                        st.markdown(f"**Intraday var.(%)**")
+                        st.markdown(f"**Last day price var.(%)**")
                         st.write(f'<p style="color:{text_color}">{formatted_var}</p>', unsafe_allow_html=True)
                     with col3:
                         st.markdown(f"**Volume (MM$)**")
