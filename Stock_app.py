@@ -123,7 +123,7 @@ with tab1:
             formatted_var = "{:.2%}".format(var)
             text_color = "green" if var > 0 else "red"
 
-            recom=recomend(symbol)[['title','publisher','link']]
+            recom=recomend(symbol)
             #-------------
             #sql procedure
             #-------------
@@ -160,7 +160,7 @@ with tab1:
             st.markdown("**Historical price evolution**")
             st.plotly_chart(fig,use_container_width=True)
         #-------------Part 2.1
-            st.dataframe(recom)
+            st.dataframe(recom.loc[:, ['title','publisher','link']])#recom.iloc[recom['title','publisher','link'])
         else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
