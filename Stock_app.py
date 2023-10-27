@@ -130,7 +130,7 @@ with tab1:
                 last_stock=lee_ayer(symbol)
                 
                 #if not new_stock.empty and not last_stock.empty:
-                if (not new_stock.empty) and (not last_stock.empty):
+                if (not new_stock.empty) and (last_stock<>""):
                     stock_now=new_stock.iloc[-1]["Close"] 
                     stock_beg=last_stock.iloc[-1]["Close"] 
                     vol_now=new_stock.iloc[-1]["Volume"] 
