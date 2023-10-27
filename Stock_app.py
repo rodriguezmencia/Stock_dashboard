@@ -143,7 +143,7 @@ with tab1:
                     cursor.execute("DELETE FROM hist_price")
             
                     #2.-insert new dataset
-                    columns_to_insert = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock_Splits', 'MA_30', 'MA_15', 'MA_5']
+                    columns_to_insert = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'MA_30', 'MA_15', 'MA_5']
                     df[columns_to_insert].reset_index().to_sql('hist_price', conection, if_exists='append', index=False)
             
                     conection.commit()
