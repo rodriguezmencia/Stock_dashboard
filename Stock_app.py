@@ -161,7 +161,21 @@ with tab1:
             st.markdown("**Historical price evolution**")
             st.plotly_chart(fig,use_container_width=True)
         #-------------Part 2.1
-            st.write(recom.loc[:, ['publisher','title', 'link']].reset_index())
+            #st.write(recom.loc[:, ['publisher','title', 'link']])
+            st.subheader("Recommendations")
+            if not recom.empty:
+                table = "<table><tr><th>Publisher</th><th>Title</th></tr>"
+                for index, row in recom.iterrows():
+                    publisher = row['publisher']
+                    title = row['title']
+                    link = row['link']
+                    title_with_link = f'<a href="{link}" target="_blank">{title}</a>'
+                    table += f"<tr><td>{publisher}</td><td>{title_with_link}</td></tr>"
+                table += "</table>"
+                st.markdown(table, unsafe_allow_html=True)
+        #------------------
+else:
+    st.write("No recommendation data available for this stock.")
         else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
