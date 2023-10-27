@@ -26,13 +26,13 @@ with st.sidebar.form(key ='Form1'):
     symbol = st.text_input('Stock symbol e.g. GOOG',help='write down the stock symbol that you want to search',value='GOOG')
     default_date = datetime(2023, 1, 1)
     init = st.date_input("Enter the start date [YYYY/MM/DD]:", value=default_date)
-    #init = st.date_input("Enter the start date [YYYY/MM/DD]:",value="2023-01-01") 
     finish=st.date_input("Enter the finish date [YYYY/MM/DD]:", )
     
     with st.expander(f"**Analytics**"):
         MA_30 = st.checkbox('MA-30',help='moving average 30 last periods')
         MA_15 = st.checkbox('MA-15',help='moving average 15 last periods')
         MA_5 = st.checkbox('MA-5',help='moving average 5 last periods')
+        Mean_ = st.checkbox('Mean',help='mean of selected periods')
     
     submit_code = st.form_submit_button(label ="Execute")
 
@@ -45,6 +45,7 @@ def lee(symbol,interval,start,end):
     df['MA_30'] = df['Close'].rolling(window=30).mean()
     df['MA_15'] = df['Close'].rolling(window=15).mean()
     df['MA_5'] = df['Close'].rolling(window=5).mean()
+    df['Mean'] = df['Close'].mean()
     return df
 
 @st.cache
@@ -102,7 +103,9 @@ with tab1:
                 if MA_5:
                     fig.add_trace(go.Scatter(x=df.index, y=df['MA_5'], line=dict(color='blue', width=1), name='MA 5'),
                                   row=1, col=1)
-                
+                if Mean_:
+                    fig.add_trace(go.Scatter(x=df.index, y=df['Mean'], line=dict(color='blue', width=1), name='Mean'),
+                                  row=1, col=1)
                 fig.update_layout(
                         title=symbol,
                         xaxis_rangeslider_visible=False,
