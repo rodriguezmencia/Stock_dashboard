@@ -50,11 +50,13 @@ def lee_hoy(symbol):
     new_stock = stock.history(period='1d')
     return new_stock
 
-@st.cache
+@st.cache_data
 def recomend(symbol):
     stock = yf.Ticker(symbol)
     recom = stock.get_news()
-    return recom
+    if recom is None:
+        return pd.DataFrame()  # Return an empty DataFrame if there's no data
+    return pd.DataFrame(recom)
 
 
 #main page
