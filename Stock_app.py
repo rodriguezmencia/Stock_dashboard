@@ -159,7 +159,7 @@ with tab1:
             st.markdown("**Historical price evolution**")
             st.plotly_chart(fig,use_container_width=True)
         #-------------Part 2.1
-            st.dataframe(recom.loc[:, ['title','publisher','link']])#recom.iloc[recom['title','publisher','link'])
+            st.dataframe(recom.loc[:, ['title', 'publisher', 'link']])
         else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
