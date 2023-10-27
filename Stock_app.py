@@ -122,7 +122,8 @@ with tab1:
             formatted_time = time.strftime("%Y-%m-%d, %H:%M:%S")
             formatted_var = "{:.2%}".format(var)
             text_color = "green" if var > 0 else "red"
-    
+
+            recom=recomend(symbol)
             #-------------
             #sql procedure
             #-------------
