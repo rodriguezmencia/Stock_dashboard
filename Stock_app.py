@@ -185,7 +185,6 @@ with tab1:
                     st.write("No data available for this stock today.")
             else:
                 st.write("No data available for this stock.")
-        #------------------
         else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
