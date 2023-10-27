@@ -104,8 +104,9 @@ with tab1:
                     fig.add_trace(go.Scatter(x=df.index, y=df['MA_5'], line=dict(color='blue', width=1), name='MA 5'),
                                   row=1, col=1)
                 if Mean_:
-                    fig.add_trace(go.Scatter(x=df.index, y=df['Mean'], line=dict(color='blue', width=1), name='Mean'),
+                    fig.add_trace(go.Scatter(x=df.index, y=df['Mean'], line=dict(color='gray', width=1, dash='dot'), name='Mean'),
                                   row=1, col=1)
+                    
                 fig.update_layout(
                         title=symbol,
                         xaxis_rangeslider_visible=False,
