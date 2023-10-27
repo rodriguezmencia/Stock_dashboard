@@ -123,7 +123,7 @@ with tab1:
             formatted_var = "{:.2%}".format(var)
             text_color = "green" if var > 0 else "red"
 
-            recom=recomend(symbol)
+            recom=recomend(symbol)[['title','publisher','link']]
             #-------------
             #sql procedure
             #-------------
