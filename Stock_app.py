@@ -54,6 +54,12 @@ def lee_hoy(symbol):
     new_stock = stock.history(period='1m')
     return new_stock
 
+def lee_ayer(symbol):
+    stock = yf.Ticker(symbol)
+    historical_data = stock.history(period='2d')
+    last_stock = historical_data.iloc[0]['Close']
+    return last_stock
+
 @st.cache_data
 def recomend(symbol):
     stock = yf.Ticker(symbol)
@@ -121,10 +127,11 @@ with tab1:
                 
                 time=datetime.now()
                 new_stock=lee_hoy(symbol)
-
-                if not new_stock.empty:
+                last_stock=lee_ayer(symbol)
+                
+                if not new_stock.empty and not last_stock.empty:
                     stock_now=new_stock.iloc[-1]["Close"] 
-                    stock_beg=new_stock.iloc[-1]["Open"] 
+                    stock_beg=last_stock.iloc[-1]["Close"] 
                     vol_now=new_stock.iloc[-1]["Volume"] 
                     var=stock_now/stock_beg-1
                     
