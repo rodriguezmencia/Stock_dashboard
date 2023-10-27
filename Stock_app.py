@@ -51,7 +51,7 @@ def lee(symbol,interval,start,end):
 @st.cache
 def lee_hoy(symbol):
     stock = yf.Ticker(symbol)
-    new_stock = stock.history(period='1d')
+    new_stock = stock.history(period='1m')
     return new_stock
 
 @st.cache_data
