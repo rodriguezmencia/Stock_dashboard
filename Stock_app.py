@@ -14,6 +14,7 @@ from datetime import datetime
 import time
 import yfinance as yf
 
+
 #st.set_page_config(page_title="Stock app")
 
 #Streamlit app
