@@ -177,7 +177,7 @@ with tab1:
             else:
                 st.write("No recommendation data available for this stock.")
         #------------------
-    else:
+        else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
 with tab2: 
