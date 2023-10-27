@@ -173,10 +173,11 @@ with tab1:
                     table += f"<tr><td>{publisher}</td><td>{title_with_link}</td></tr>"
                 table += "</table>"
                 st.markdown(table, unsafe_allow_html=True)
+        
+            else:
+                st.write("No recommendation data available for this stock.")
         #------------------
-else:
-    st.write("No recommendation data available for this stock.")
-        else:
+    else:
             st.write("please enter a valid stock symbol")        
         #-------------Part 3
 with tab2: 
