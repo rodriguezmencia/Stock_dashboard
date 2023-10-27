@@ -37,7 +37,7 @@ with st.sidebar.form(key ='Form1'):
     submit_code = st.form_submit_button(label ="Execute")
 
 #------------------------------------------------------------------------------------------
-@st.cache
+@st.cache_data
 def lee(symbol,interval,start,end):
     stock = yf.Ticker(symbol)
     df = stock.history(interval=interval, start=start, end=end)
@@ -48,7 +48,7 @@ def lee(symbol,interval,start,end):
     df['Mean'] = df['Close'].mean()
     return df
 
-@st.cache
+@st.cache_data
 def lee_hoy(symbol):
     stock = yf.Ticker(symbol)
     new_stock = stock.history(period='1m')
@@ -64,7 +64,7 @@ def recomend(symbol):
 
 
 #main page
-tab1, tab2 = st.tabs(["General info", "Detailed info"])
+tab1, tab2, tab3 = st.tabs(["General info", "Detailed info", "Read Me"])
 with tab1:
     # title
     st.subheader("Stock Analytics")
@@ -230,7 +230,11 @@ with tab2:
                 with st.expander("Pretty Table"):
                     query_df = pd.DataFrame(query_results)
                     st.dataframe(query_df)
-                
+
+with tab3:
+    st.subheader("Purpose and use of the app")
+    
+    
         #----------------------------------------------------------------------------------------------
             
 
