@@ -143,7 +143,7 @@ with tab1:
             #-------------
     
         #-------------Part 1
-            st.markdown("**Summary - Current market information**")
+            st.subheader("Summary - Current market information")
             col1,col2,col3,col4 = st.columns([0.25,0.25,0.25,0.25])
             with col1:
                 #st.plotly_chart(fig,use_container_width=True)
@@ -160,11 +160,10 @@ with tab1:
                 st.write(f'<p style="color:black">{formatted_time}</p>', unsafe_allow_html=True)
     
         #-------------Part 2
-            st.markdown("**Historical price evolution**")
+            st.subheader("Historical price evolution")
             st.plotly_chart(fig,use_container_width=True)
         #-------------Part 2.1
-            #st.write(recom.loc[:, ['publisher','title', 'link']])
-            st.subheader("Recommendations")
+            st.subheader("News related with the company")
             if not recom.empty:
                 table = "<table><tr><th>Publisher</th><th>Title</th></tr>"
                 for index, row in recom.iterrows():
