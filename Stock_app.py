@@ -22,7 +22,7 @@ import yfinance as yf
 #------------------------------------------------------------------------------------------
 with st.sidebar.form(key ='Form1'):
     st.title("Enter information")
-    symbol = st.text_input('Stock symbol e.g. GOOG',help='write down the stock symbol that you want to search','GOOG')
+    symbol = st.text_input('Stock symbol e.g. GOOG',help='write down the stock symbol that you want to search',value='GOOG')
     inter=st.selectbox('Enter the interval of time:',
     ('1d', '5d', '1wk', '1mo', '3mo'))#'1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', 
     init = st.date_input("Enter the start date [YYYY/MM/DD]:",'2023/01/01' ) 
