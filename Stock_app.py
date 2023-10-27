@@ -22,7 +22,7 @@ import yfinance as yf
 #------------------------------------------------------------------------------------------
 with st.sidebar.form(key ='Form1'):
     st.title("Enter information")
-    symbol = st.text_input('Stock symbol e.g. GOOG')
+    symbol = st.text_input('Stock symbol e.g. GOOG',help='write down the stock symbol that you want to search')
     inter=st.selectbox('Enter the interval of time:',
     ('1d', '5d', '1wk', '1mo', '3mo'))#'1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', 
     init = st.date_input("Enter the start date [YYYY-MM-DD]:", ) 
@@ -30,8 +30,8 @@ with st.sidebar.form(key ='Form1'):
     
     with st.expander(f"**Analytics**"):
         MA_30 = st.checkbox('MA-30',help='moving average 30 last periods')
-        MA_15 = st.checkbox('MA-15')
-        MA_5 = st.checkbox('MA-5')
+        MA_15 = st.checkbox('MA-15',help='moving average 15 last periods')
+        MA_5 = st.checkbox('MA-5',help='moving average 5 last periods')
     
     submit_code = st.form_submit_button(label ="Execute")
 
