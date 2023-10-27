@@ -23,7 +23,7 @@ import yfinance as yf
 with st.sidebar.form(key ='Form1'):
     st.title("Enter information")
     symbol = st.text_input('Stock symbol e.g. GOOG',help='write down the stock symbol that you want to search',value='GOOG')
-    init = st.date_input("Enter the start date [YYYY/MM/DD]:",value="2023/01/01") 
+    init = st.date_input("Enter the start date [YYYY/MM/DD]:",value="2023-01-01") 
     finish=st.date_input("Enter the finish date [YYYY/MM/DD]:", )
     
     with st.expander(f"**Analytics**"):
