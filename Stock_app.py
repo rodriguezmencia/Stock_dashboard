@@ -47,12 +47,6 @@ def lee(symbol,interval,start,end):
     df['MA_5'] = df['Close'].rolling(window=5).mean()
     df['Mean'] = df['Close'].mean()
     return df
-
-@st.cache_data
-def info(symbol):
-    stock = yf.Ticker(symbol)
-    df = stock.get_info()
-    return df
     
 @st.cache_data
 def lee_hoy(symbol):
@@ -148,7 +142,6 @@ with tab1:
                     text_color = "green" if var > 0 else "red"
         
                     recom=recomend(symbol)
-                    information=info(symbol)
                     #-------------
                     #sql procedure
                     #-------------
@@ -200,7 +193,6 @@ with tab1:
                 
                     else:
                         st.write("No recommendation data available for this stock.")
-                    st.dataframe(information)
                 else:
                     st.write("No data available for this stock today.")
             else:
