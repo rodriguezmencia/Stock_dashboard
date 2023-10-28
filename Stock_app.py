@@ -50,6 +50,12 @@ def lee(symbol,interval,start,end):
     return df
 
 @st.cache_data
+def info(symbol):
+    stock = yf.Ticker(symbol)
+    df = stock.get_info()
+    return df
+    
+@st.cache_data
 def lee_hoy(symbol):
     stock = yf.Ticker(symbol)
     new_stock = stock.history(period='1m')
@@ -143,7 +149,7 @@ with tab1:
                     text_color = "green" if var > 0 else "red"
         
                     recom=recomend(symbol)
-                    
+                    information=info(symbol)
                     #-------------
                     #sql procedure
                     #-------------
@@ -195,6 +201,7 @@ with tab1:
                 
                     else:
                         st.write("No recommendation data available for this stock.")
+                    st.dataframe(information)
                 else:
                     st.write("No data available for this stock today.")
             else:
