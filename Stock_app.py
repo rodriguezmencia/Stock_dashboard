@@ -237,13 +237,18 @@ with tab2:
 
 with tab3:
     st.subheader("Purpose and use of the app")
-    st.write('''This app has the purpose to show stock prices online, to watch basic descriptive analytics, 
-        interesting news related with the specific stock, and to make specific queries if it is requiered.''')
+    st.write('''This app serves the purpose of providing real-time stock price updates, offering essential descriptive analytics,
+        delivering relevant news related to the chosen stock, and facilitating customized queries when needed.''')
     st.write('''The app use an API integration with Yahoo Finance information [yFinance Project](https://pypi.org/project/yfinance/) to get real time
         stock market information.''')
     st.markdown('''**How to use it**''')
-    st.markdown('''You just need to enter the parameters that you need to watch, go to the sidebar and select: **Symbol stock**, **initial and end periods** of analysis,
-        and finally you can customize adding **moving average** of different periods
+    st.markdown('''Simply input the specific parameters you want to monitor, navigate to the sidebar, and choose from options such as the **Stock Symbol**,
+        **Start** and **End Analysis Periods**, and customize your analysis by incorporating **Moving Averages** with varying timeframes.
+        ''')
+    st.markdown('''**Advantages of this model**''')
+    st.markdown('''In this app, you'll discover a versatile framework for analyzing stock market prices, powered by real-time datasets. 
+        Explore straightforward yet informative descriptive analytics, featuring a concise summary of essential metrics. 
+        You can also enhance your analysis by incorporating additional elements, such as customizable moving averages with various timeframes and comprehensive data set mean calculations.
         ''')
         #----------------------------------------------------------------------------------------------
             
